@@ -1,9 +1,10 @@
-const randomArr = require('./randomArr')
+const test = require('./test')
 
 /**
- * 实现一个冒泡排序
+ * 实现一个冒泡排序, 返回排序后的数组, 不改变原数组
  */
-function bubbleSrot(list) {
+function bubbleSrot(arr) {
+  const list = [...arr]
   for (let i = 0, len = list.length; i < len; i++) {
     for (let j = 0; j < len - i - 1; j++) {
       if (list[j] > list[j + 1]) {
@@ -13,6 +14,7 @@ function bubbleSrot(list) {
       }
     }
   }
+  return list
 }
 
 /**
@@ -23,10 +25,4 @@ function bubbleSrot(list) {
  */
 
 // 测试
-const list = randomArr()
-
-console.log('原数组', list)
-
-bubbleSrot(list)
-
-console.log('排序后', list)
+test(bubbleSrot)
