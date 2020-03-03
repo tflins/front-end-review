@@ -4,7 +4,6 @@ Function.prototype.apply2 = function(content = window, args = []) {
 
   let result = null
   if (args.length) {
-    console.log(args)
     result = content.func(...args)
   } else {
     result = content.func()
