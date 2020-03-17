@@ -1,8 +1,9 @@
 /**实现一个 new 操作符 */
 function New(func, ...args) {
+  if (typeof func !== 'function') throw Error(`${func} not function!`)
   const obj = {}
-  if (func.protoType) {
-    obj.__proto__ = func.protoType
+  if (func.prototype) {
+    obj.__proto__ = func.prototype
   }
 
   const result = func.apply(obj, args)
