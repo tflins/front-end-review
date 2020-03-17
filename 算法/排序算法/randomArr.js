@@ -5,11 +5,11 @@ function randomNum(min, max) {
 /**
  * 产生长度为 len 的数组，数组中的值为 [0 , maxNum] 之间
  *
- * @param {number} [len=15]
+ * @param {number} [len=100]
  * @param {number} [maxNum=100]
  * @returns {array}
  */
-function randomArr(len = 15, maxNum = 100) {
+function randomArr(len = 100, maxNum = 100) {
   const arr = []
   for (let i = 0; i < len; i++) {
     let num = randomNum(0, maxNum)
