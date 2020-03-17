@@ -13,6 +13,11 @@ Function.prototype.apply2 = function(content = window, args = []) {
   return result
 }
 
+// 一行代码版，借助 bind 方法
+Function.prototype.apply3 = function(content = window, args = []) {
+  return this.bind(content, ...args)()
+}
+
 /**
  * 相关知识:
  * 1. apply 的作用是改变函数的作用域, 指定函数一个 this 对象和一个参数数组, 并返回执行结果
@@ -33,4 +38,4 @@ let person = {
   age: 23
 }
 
-console.log(test.apply2(person, ['lyf', 30]))
+test.apply2(person, ['lyf', 30])
