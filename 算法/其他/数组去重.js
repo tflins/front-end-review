@@ -1,6 +1,6 @@
 const randomArr = require('../utils/tools').randomArr
 
-const arr = randomArr(90000, 10)
+const arr = randomArr(10, 10)
 
 console.log('原数组', arr)
 
@@ -30,6 +30,20 @@ function uniqueArr3(arr) {
   return Array.from(new Set(arr))
 }
 
+// 第四种方法： 利用 indexOf 找出数组中当前值的第一个元素，若相等则说明是第一个出现的元素，推入返回的数组中
+function uniqueArr4(arr) {
+  const result = []
+  for (let i = 0, len = arr.length; i < len; i++) {
+    const curr = arr[i]
+    const firstIndex = arr.indexOf(curr)
+    if (firstIndex === i) {
+      result.push(curr)
+      continue
+    }
+  }
+  return result
+}
+
 console.time('start')
-console.log('去重后', uniqueArr(arr))
+console.log('去重后', uniqueArr4(arr))
 console.timeEnd('start')
