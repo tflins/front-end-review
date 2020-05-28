@@ -6,6 +6,10 @@ function isFunction(func) {
   return typeof func === 'function'
 }
 
+function isTextNode(node) {
+  return node.nodeType === 3
+}
+
 function defineReactive(data, key, val) {
   observer(val)
   const dep = new Dep()
@@ -103,4 +107,36 @@ Mvvm.prototype.proxyData = function () {
       }
     })
   })
+}
+
+function nodeToFragment(el) {
+  const fragment = document.createDocumentFragment()
+  const child = el.firstChild
+
+  while (child) {
+    fragment.appendChild(child)
+    child = el.firstChild
+  }
+
+  return fragment
+}
+
+function compileElement(el) {
+  const childNodes = el.childNodes
+  Array.prototype.slice.call(childNodes).forEach(node => {
+    const reg = /\{\{(.*)\}\}/
+    const text = node.textContent
+
+    if (isTextNode(text) && reg.test(text)) {
+      compileText(node, reg.exec(text)[1])
+    }
+
+    if (node.childNodes && node.childNodes.length) {
+      compileElement(node)
+    }
+  })
+}
+
+compileText(node, exp) {
+  // const initText = 
 }
