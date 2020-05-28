@@ -81,10 +81,26 @@ Watcher.prototype.run = function () {
 function Mvvm(el, data, exp) {
   this.data = data
   observer(data)
+  this.proxyData()
 
   el.innerHTML = this.data[exp]
 
   new Watcher(this, exp, v => {
     el.innerHTML = v
+  })
+}
+
+Mvvm.prototype.proxyData = function () {
+  Object.keys(this.data).forEach(key => {
+    Object.defineProperty(this, key, {
+      enumerable: false,
+      configurable: true,
+      get() {
+        return this.data[key]
+      },
+      set(newValue) {
+        this.data[key] = newValue
+      }
+    })
   })
 }
