@@ -36,4 +36,15 @@ function shuffleArr(arr) {
   return result
 }
 
-console.log(shuffleArr(['a', 'b', 'c', 'd', 'e', 'f']))
+function shuffleArr2(arr) {
+  const tempArr = [...arr]
+  const result = []
+  while (tempArr.length) {
+    const index = randomNum(0 ,tempArr.length - 1)
+    result.push(tempArr[index])
+    tempArr.splice(index, 1)
+  }
+  return result
+}
+
+console.log(shuffleArr2(['a', 'b', 'c', 'd', 'e', 'f']))
