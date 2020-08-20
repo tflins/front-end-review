@@ -44,6 +44,21 @@ function uniqueArr4(arr) {
   return result
 }
 
+// 第五种方法： 利用 object[key] 来判断，模拟 map
+function uniqueArr5(arr) {
+  const result = []
+  const map = {}
+
+  arr.forEach(v => {
+    if (!map[v]) {
+      map[v] = true
+      result.push(v)
+    }
+  })
+
+  return result
+}
+
 console.time('start')
-console.log('去重后', uniqueArr4(arr))
+console.log('去重后', uniqueArr5(arr))
 console.timeEnd('start')
