@@ -1,4 +1,6 @@
 /**实现一个防抖函数 */
+
+// 1. 非立即执行版： 触发后 m 秒后在执行这个函数，若在 m 秒内重新触发执行函数则重新计时
 function debounce(fn, delay) {
   if (!fn instanceof Function) {
     throw Error('not a function')
